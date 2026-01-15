@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { initDatabase } = require('./data/database');
+const { initDatabase } = require('../data/database');
 const { ObjectId } = require('mongodb');
 
 router.get('/', async (req, res) => {
