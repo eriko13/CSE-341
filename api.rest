@@ -1,6 +1,6 @@
 ### CSE-341 Contacts API Test File
 ### Base URL
-@baseUrl = https://cse-341-s0st.onrender.com/
+@baseUrl = http://localhost:8080
 
 ###############################################
 # GET All Contacts
