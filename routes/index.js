@@ -1,19 +1,8 @@
 const router = require('express').Router();
-const { initDatabase } = require('../data/database');
-const { ObjectId } = require('mongodb');
+const contactsController = require('../controllers/index');
 
-router.get('/', async (req, res) => {
-    db = await initDatabase();
-    const collection = db.collection('Contacts');
-    const docs = await collection.find().toArray();
-    res.json(docs);
-});
+router.get('/', contactsController.getAll);
 
-router.get('/:id', async (req, res) => {
-    db = await initDatabase();
-    const collection = db.collection('Contacts');
-    const doc = await collection.findOne({ _id: new ObjectId(req.params.id) });
-    res.json(doc);
-});
+router.get('/:id', contactsController.getSingle);
 
 module.exports = router;
