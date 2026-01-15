@@ -1,0 +1,19 @@
+### CSE-341 Contacts API Test File
+### Base URL
+@baseUrl = https://cse-341-s0st.onrender.com/
+
+###############################################
+# GET All Contacts
+# Returns all contacts from the database
+###############################################
+
+GET {{baseUrl}}/
+
+###############################################
+# GET Single Contact by ID
+# Replace the ID below with a valid MongoDB ObjectId
+###############################################
+
+@contactId = 6969081086ed954cdf69ec1e
+
+GET {{baseUrl}}/{{contactId}}
