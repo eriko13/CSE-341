@@ -23,7 +23,18 @@ const getSingle = async (req, res) => {
     res.json(doc);
 };
 
+// Defines the controller for creating a new contact
+const addContact = async (req, res) => {
+    const db = await initDatabase();
+    const collection = db.collection('Contacts');
+
+    const {firstName, lastName, } = req.body;
+
+    await collection.set()
+};
+
 module.exports = {
     getAll,
-    getSingle
+    getSingle,
+    addContact
 };
