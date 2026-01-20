@@ -28,13 +28,86 @@ const addContact = async (req, res) => {
     const db = await initDatabase();
     const collection = db.collection('Contacts');
 
-    const {firstName, lastName, } = req.body;
+    const { firstName, lastName, email, favoriteColor, birthday } = req.body;
 
-    await collection.set()
+    // Validates that all required fields are provided
+    if (!firstName || !lastName || !email || !favoriteColor || !birthday) {
+        return res.status(400).json({ error: 'All fields are required: firstName, lastName, email, favoriteColor, birthday' });
+    }
+
+    // Creates a new contact object
+    const newContact = {
+        firstName,
+        lastName,
+        email,
+        favoriteColor,
+        birthday
+    };
+
+    // Inserts the new contact into the database
+    const result = await collection.insertOne(newContact);
+
+    res.status(201).json({ id: result.insertedId });
+};
+
+// Defines the controller for updating a contact
+const updateContact = async (req, res) => {
+    const db = await initDatabase();
+    const collection = db.collection('Contacts');
+
+    const { firstName, lastName, email, favoriteColor, birthday } = req.body;
+    const contactId = req.params.id;
+
+    // Validates that all required fields are provided
+    if (!firstName || !lastName || !email || !favoriteColor || !birthday) {
+        return res.status(400).json({ error: 'All fields are required: firstName, lastName, email, favoriteColor, birthday' });
+    }
+
+    // Creates the updated contact object
+    const updatedContact = {
+        firstName,
+        lastName,
+        email,
+        favoriteColor,
+        birthday
+    };
+
+    // Updates the contact in the database
+    const result = await collection.replaceOne(
+        { _id: new ObjectId(contactId) },
+        updatedContact
+    );
+
+    // Checks if the contact was found and updated
+    if (result.matchedCount === 0) {
+        return res.status(404).json({ error: 'Contact not found' });
+    }
+
+    res.status(204).send();
+};
+
+// Defines the controller for deleting a contact
+const deleteContact = async (req, res) => {
+    const db = await initDatabase();
+    const collection = db.collection('Contacts');
+
+    const contactId = req.params.id;
+
+    // Deletes the contact from the database
+    const result = await collection.deleteOne({ _id: new ObjectId(contactId) });
+
+    // Checks if the contact was found and deleted
+    if (result.deletedCount === 0) {
+        return res.status(404).json({ error: 'Contact not found' });
+    }
+
+    res.status(200).send();
 };
 
 module.exports = {
     getAll,
     getSingle,
-    addContact
+    addContact,
+    updateContact,
+    deleteContact
 };

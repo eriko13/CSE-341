@@ -10,10 +10,54 @@
 GET {{baseUrl}}/
 
 ###############################################
+# POST Create New Contact
+# All fields are required
+# Returns the new contact id in the response body
+###############################################
+
+POST {{baseUrl}}/
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@example.com",
+    "favoriteColor": "Blue",
+    "birthday": "1990-01-15"
+}
+
+###############################################
 # GET Single Contact by ID
 # Replace the ID below with a valid MongoDB ObjectId
 ###############################################
 
-@contactId = 6969081086ed954cdf69ec1e
+@contactId = 696ff92ba542aec17c9a8921
 
 GET {{baseUrl}}/{{contactId}}
+
+
+###############################################
+# PUT Update Contact
+# Updates an existing contact by ID
+# All fields are required
+# Returns 204 No Content on success
+###############################################
+
+PUT {{baseUrl}}/{{contactId}}
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@example.com",
+    "favoriteColor": "Green",
+    "birthday": "1990-01-15"
+}
+
+###############################################
+# DELETE Contact
+# Deletes a contact by ID
+# Returns 200 OK on success
+###############################################
+
+DELETE {{baseUrl}}/{{contactId}}
