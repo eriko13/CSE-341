@@ -31,7 +31,7 @@ Content-Type: application/json
 # Replace the ID below with a valid MongoDB ObjectId
 ###############################################
 
-@contactId = 696ff92ba542aec17c9a8921
+@contactId = 69703f05a6972b08b3190956
 
 GET {{baseUrl}}/{{contactId}}
 
