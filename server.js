@@ -6,6 +6,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const indexRouter = require('./routes/index');
 const dotenv = require('dotenv');
+const passport = require('passport');
 dotenv.config();
 
 // Defines the body parser for the API
