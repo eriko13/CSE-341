@@ -19,6 +19,7 @@
   "description": "Contacts API for CSE 341 Project 1",
   "dependencies": {
     "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
     "dotenv": "^16.4.7",
     "express": "^5.2.1",
     "express-session": "^1.19.0",
