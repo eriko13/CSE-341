@@ -5,8 +5,18 @@ const doc = {
         title: 'Contacts API',
         description: 'CSE 341 Contacts API Documentation'
     },
-    host: '',
-    schemes: ['https', 'http']
+    host: 'localhost:8080',
+    schemes: ['http', 'https'],
+    securityDefinitions: {
+        github_oauth: {
+            type: 'oauth2',
+            authorizationUrl: 'https://github.com/login/oauth/authorize',
+            flow: 'implicit',
+            scopes: {
+                read_user: 'Read user info'
+            }
+        }
+    }
 };
 
 const outputFile = './swagger.json';
