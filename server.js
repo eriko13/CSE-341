@@ -32,17 +32,7 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-// Middleware to check if user is logged in (optional here if using middleware file, but useful for base route)
-app.get('/', (req, res) => { res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out") });
-
-app.get('/github/callback', passport.authenticate('github', {
-  failureRedirect: '/api-docs', session: false
-}),
-  (req, res) => {
-    req.session.user = req.user;
-    res.redirect('/');
-  });
-
+// Defines the body parser for the API
 // Defines the body parser for the API
 app
   .use(bodyParser.json())
@@ -64,7 +54,14 @@ app
   })
   .use(cors({ methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'] }))
   .use(cors({ origin: '*' }))
-  .use("/", require('./routes/index.js'));
+
+app.get('/github/callback', passport.authenticate('github', {
+  failureRedirect: '/api-docs', session: false
+}),
+  (req, res) => {
+    req.session.user = req.user;
+    res.redirect('/');
+  });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
