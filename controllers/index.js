@@ -14,6 +14,9 @@ const getAll = async (req, res) => {
 
 // Defines the controller for getting a single contact
 const getSingle = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        return res.status(400).json({ error: 'Invalid contact ID' });
+    }
     const db = await initDatabase();
     const collection = db.collection('Contacts');
 
@@ -52,6 +55,9 @@ const addContact = async (req, res) => {
 
 // Defines the controller for updating a contact
 const updateContact = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        return res.status(400).json({ error: 'Invalid contact ID' });
+    }
     const db = await initDatabase();
     const collection = db.collection('Contacts');
 
@@ -88,6 +94,9 @@ const updateContact = async (req, res) => {
 
 // Defines the controller for deleting a contact
 const deleteContact = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        return res.status(400).json({ error: 'Invalid contact ID' });
+    }
     const db = await initDatabase();
     const collection = db.collection('Contacts');
 
