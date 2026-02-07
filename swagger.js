@@ -5,12 +5,12 @@ const doc = {
         title: 'Contacts API',
         description: 'CSE 341 Contacts API Documentation'
     },
-    host: 'localhost:8080',
-    schemes: ['http', 'https'],
+    host: 'cse-341-s0st.onrender.com',
+    schemes: ['https'],
     securityDefinitions: {
         github_oauth: {
             type: 'oauth2',
-            authorizationUrl: 'https://github.com/login/oauth/authorize',
+            authorizationUrl: 'https://cse-341-s0st.onrender.com/login',
             flow: 'implicit',
             scopes: {
                 read_user: 'Read user info'

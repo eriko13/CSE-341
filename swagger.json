@@ -5,16 +5,15 @@
     "description": "CSE 341 Contacts API Documentation",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "cse-341-s0st.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "securityDefinitions": {
     "github_oauth": {
       "type": "oauth2",
-      "authorizationUrl": "https://github.com/login/oauth/authorize",
+      "authorizationUrl": "https://cse-341-s0st.onrender.com/login",
       "flow": "implicit",
       "scopes": {
         "read_user": "Read user info"
