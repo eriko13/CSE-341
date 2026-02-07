@@ -19,7 +19,7 @@ const getSingle = async (req, res) => {
 
     // Gets the single contact from the database
     const doc = await collection.findOne({ _id: new ObjectId(req.params.id) });
-    
+
     res.json(doc);
 };
 

@@ -53,8 +53,7 @@ app
     next();
   })
   .use(cors({ methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'] }))
-  .use(cors({ origin: '*' }))
-  .use('/', require('./routes/index'));
+  .use(cors({ origin: '*' }));
 
 app.get('/github/callback', passport.authenticate('github', {
   failureRedirect: '/api-docs', session: false
