@@ -10,7 +10,7 @@ const doc = {
     securityDefinitions: {
         github_oauth: {
             type: 'oauth2',
-            authorizationUrl: 'https://cse-341-s0st.onrender.com/login',
+            authorizationUrl: 'https://github.com/login/oauth/authorize',
             flow: 'implicit',
             scopes: {
                 read_user: 'Read user info'
